@@ -6,11 +6,11 @@ import lombok.*;
 import java.util.List;
 
 @Entity
-@Table(name = "character")
+@Table(name = "actor")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class Character {
+public class Actor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -20,7 +20,7 @@ public class Character {
     private Float weight;
     private String history;
 
-    @ManyToMany(mappedBy = "characters")
-    private List<Movies> movies;
+    @ManyToMany(mappedBy = "actors")
+    private List<Movie> movies;
 
 }

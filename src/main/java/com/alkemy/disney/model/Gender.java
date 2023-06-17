@@ -3,6 +3,8 @@ package com.alkemy.disney.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "gender")
 @AllArgsConstructor
@@ -14,8 +16,7 @@ public class Gender {
     private String name;
     private String image;
 
-    @ManyToOne
-    @JoinColumn(name = "movie_id")
-    private Movies movies;
+    @OneToMany(mappedBy = "gender")
+    private List<Movie> movies;
 
 }
