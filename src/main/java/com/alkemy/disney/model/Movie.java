@@ -7,11 +7,11 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Entity
-@Table(name = "movies")
+@Table(name = "movie")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class Movies {
+public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -21,14 +21,10 @@ public class Movies {
     private Integer rating;
 
     @ManyToMany
-    @JoinTable(
-            name = "movie_character",
-            joinColumns = @JoinColumn(name = "movie_id"),
-            inverseJoinColumns = @JoinColumn(name = "character_id")
-    )
-    private List<Character> characters;
+    private List<Actor> actors;
 
-    @OneToMany(mappedBy = "movies")
-    private List<Gender> genders;
+    @ManyToOne
+    @JoinColumn(name = "gender_id")
+    private Gender gender;
 
 }
