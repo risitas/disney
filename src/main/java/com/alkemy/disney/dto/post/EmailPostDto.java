@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class EmailDto {
+public class EmailPostDto {
     @NotBlank
     private String subject;
     @NotBlank

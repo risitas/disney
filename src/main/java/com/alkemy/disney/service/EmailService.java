@@ -1,8 +1,8 @@
 package com.alkemy.disney.service;
 
-import com.alkemy.disney.dto.post.EmailDto;
+import com.alkemy.disney.dto.post.EmailPostDto;
 
 public interface EmailService {
 
-    void sendEmail(EmailDto emailDTO) throws Exception;
+    void sendEmail(EmailPostDto emailPostDto) throws Exception;
 }
