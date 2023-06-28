@@ -12,7 +12,6 @@ import java.util.List;
 public interface RolPostMapper {
     @Mapping(source = "rolName", target = "rolName")
     RolPostDto toRolPostDto(Rol rol);
-    List<RolPostDto> rolPostDtos(List<Rol> roles);
     @InheritInverseConfiguration
     @Mapping(target = "users", ignore = true)
     Rol  toRol(RolPostDto rolPostDto);

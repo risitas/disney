@@ -15,7 +15,6 @@ import java.util.List;
 public interface UserGetMapper {
     @Mappings({
             @Mapping(source = "identification", target = "identification"),
-            @Mapping(source = "username", target = "username"),
             @Mapping(source = "email", target = "email"),
             @Mapping(source = "rol.rolName", target = "rolName")
     })

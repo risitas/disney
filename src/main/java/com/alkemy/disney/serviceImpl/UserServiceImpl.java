@@ -46,17 +46,17 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Optional<UserGetDto> findUserByEmail(String email) throws Exception {
-        Optional<User> rol = userRepository.findByEmail(email);
+        Optional<User> user = userRepository.findByEmail(email);
 
-        if (!rol.isPresent())
+        if (!user.isPresent())
             throw new AttributeException("The user with email " + email + " does not exist");
-        return Optional.ofNullable(userGetMapper.toUserGetDto(rol.get()));
+        return Optional.ofNullable(userGetMapper.toUserGetDto(user.get()));
     }
 
     @Override
     public Boolean create(UserPostDto userPostDto) throws Exception {
 
-        if (isExist(userPostDto.getIdentification()))
+        if (isExist(userPostDto.getIdentification()) || isExistEmail(userPostDto.getEmail()))
             throw new AttributeException("The user already exists");
 
         userPostDto.setPassword(passwordEncoder.encode(userPostDto.getPassword()));
@@ -89,6 +89,16 @@ public class UserServiceImpl implements UserService {
     public boolean isExist(Long identification) {
 
         boolean isPresent = userRepository.findById(identification).isPresent();
+
+        if (!isPresent) {
+            return false;
+        }
+        return true;
+    }
+
+    public boolean isExistEmail(String email) {
+
+        boolean isPresent = userRepository.findByEmail(email).isPresent();
 
         if (!isPresent) {
             return false;

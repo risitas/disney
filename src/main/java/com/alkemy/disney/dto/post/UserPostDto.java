@@ -18,14 +18,10 @@ public class UserPostDto {
     private Long identification;
 
     @NotBlank
-    @Size(max = 10, message = "The username must have a maximum of 10 characters.")
-    private String username;
-
-    @NotBlank
     @Size(min = 8, message = "Password must be at least 8 characters long")
     private String password;
 
     @NotBlank
     @Email
-    private String  email;
+    private String email;
 }

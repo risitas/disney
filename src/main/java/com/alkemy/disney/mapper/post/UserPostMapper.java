@@ -15,12 +15,10 @@ import java.util.List;
 public interface UserPostMapper {
     @Mappings({
             @Mapping(source = "identification", target = "identification"),
-            @Mapping(source = "username", target = "username"),
             @Mapping(source = "password", target = "password"),
             @Mapping(source = "email", target = "email")
     })
     UserPostDto toUserPostDto(User user);
-    List<UserPostDto> userPostDtos(List<User> users);
     @InheritInverseConfiguration
     @Mapping(target = "rol", ignore = true)
     User  toUser(UserPostDto userPostDto);

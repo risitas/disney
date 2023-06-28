@@ -17,7 +17,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class SessionServiceImpl implements SessionService {
 
-    @Autowired
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
     @Override
