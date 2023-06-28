@@ -9,7 +9,7 @@ import org.springframework.http.HttpStatus;
 @Setter
 @AllArgsConstructor
 @ToString
-public class messageDto<T> {
+public class MessageDto<T> {
     private HttpStatus state;
     private boolean error;
     private T reply;
