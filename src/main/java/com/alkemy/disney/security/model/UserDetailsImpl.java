@@ -3,12 +3,10 @@ package com.alkemy.disney.security.model;
 import com.alkemy.disney.model.User;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
+import java.util.Collections;
 @AllArgsConstructor
 public class UserDetailsImpl implements UserDetails {
 
@@ -16,13 +14,7 @@ public class UserDetailsImpl implements UserDetails {
     private Collection<? extends GrantedAuthority> authorities;
 
     public static UserDetailsImpl build(User user){
-        List<GrantedAuthority> authorities = new ArrayList<>();
-       // if(user instanceof User){
-            authorities.add( new SimpleGrantedAuthority("Admin") );
-      /*  }else if(user instanceof Moderador){
-            authorities.add( new SimpleGrantedAuthority("MODERADOR") );
-        }*/
-        return new UserDetailsImpl(user.getEmail(), user.getPassword(), authorities);
+        return new UserDetailsImpl(user.getEmail(), user.getPassword(), Collections.emptyList());
     }
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {
